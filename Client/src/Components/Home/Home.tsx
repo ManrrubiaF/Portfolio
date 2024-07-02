@@ -25,12 +25,12 @@ export default function Home() {
 
     const getAbout = async () => {
         try {
-            const response = await axios.get(`${Back_Url2}/about/${languageState}`)
+            const response = await axios.get(`${Back_Url}/about/${languageState}`)
             setAbout(response.data[0].text);
         } catch (error) {
             console.error('Error en el servidor principal, intentando con el servidor de respaldo');
             try {
-                const response = await axios.get(`${Back_Url}/about/${languageState}`);
+                const response = await axios.get(`${Back_Url2}/about/${languageState}`);
                 setAbout(response.data[0].text);
             } catch (backupError) {
                 console.error('Error en el servidor de respaldo también');
