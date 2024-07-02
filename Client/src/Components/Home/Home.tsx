@@ -41,9 +41,7 @@ export default function Home() {
 
     return (
         <div className={Styles.divmayor}>
-            <div className={Styles.divnav}>
-                <NavBar />
-            </div>
+            <NavBar />
             <div className={Styles.divcontainer}>
                 {about !== '' ? (
                     <div className={Styles.textContainer}>
@@ -62,7 +60,6 @@ export default function Home() {
                     <img src={foto} alt='Profile/Perfil' />
                 </div>
             </div>
-
         </div>
     )
 }

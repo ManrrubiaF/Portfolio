@@ -8,10 +8,15 @@
 
 }
 .divForm{
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(95, 52, 252, 0.8);
     padding: 10px;
+    border-radius: 10px;
     width: fit-content;
-    height: fit-content;
+    height: 23rem;
+}
+.errorText{
+    width: fit-content;
+    height: 20px;
 }
 .Divcontainer{
     display: flex;
@@ -29,7 +34,9 @@
 }
 .label{
     color:white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     background-color: none;
+    padding-right: 1rem;
 }
 .labelContainer input{
     color: black;
@@ -47,19 +54,23 @@
     border: none; 
     line-height: normal; 
     resize: none; 
-    overflow: auto;
+    overflow-y: scroll;
 }
 .divButton{
     display: flex;
 }
 .divButton button{
     margin-left: 40%;
+    width: 10rem;
+    height: 3rem;
     border-radius: 2rem;
     border: solid black;
 }
 .divButton button:hover{
+    cursor: pointer;
     color: white;
-    background-color: black;
+    background-color: green;
+    box-shadow: yellowgreen 3px 3px 3px 3px;
 }
 
 

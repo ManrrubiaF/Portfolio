@@ -71,7 +71,7 @@ export default function ViewSkills() {
               <div key={skill.id} className={Styles.skillCard}>
                 <h3>{skill.name}</h3>
                 <img src={skill.logo} className={Styles.skillLogo} alt="Logo" />
-                <h3 className={skill.level}> Level: {skill.level}</h3>
+                <p className={skill.level}> Level: {skill.level}</p>
               </div>
             ))}
           </div>

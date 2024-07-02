@@ -1,4 +1,17 @@
-
+.navMayor {
+  display: flex;
+  position: fixed;
+  width: 100vw;
+  height: fit-content;
+  background-color: black;   
+  padding-bottom: 1rem ; 
+  transition: box-shadow 0.3s;
+  z-index: 9999;
+}
+.navMayor.scrolled {
+  box-shadow: 0px 0px 25px rgba(255, 255, 255, 2); 
+  border-bottom: white solid 1px;
+}
 .navbutton {
   cursor: pointer;
   display: flex;
@@ -15,10 +28,9 @@
 }
 
 .navbutton:hover {
-  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
-  background-color: rgb(0, 0, 0);
+  box-shadow: 0 6px 9px 0 rgb(255, 255, 255), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  background-color: rgb(132, 212, 101);
   color: white;
-  border-radius: 0.9rem;
 }
 
 .container {
@@ -26,7 +38,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
   top: 0;
   left: 0;
   right: 0;

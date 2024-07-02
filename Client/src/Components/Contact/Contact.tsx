@@ -111,7 +111,7 @@ export default function Contact() {
                 value={Data.email}
                 onChange={handleChange}
               />
-              {errors.email && <p>{errors.email}</p>}
+              {errors.email ? (<p className={Styles.errorText}>{errors.email}</p>):(<p className={Styles.errorText}></p>)}
             </div>
             <div className={Styles.labelContainer}>
               <label className={Styles.label}>
@@ -125,7 +125,7 @@ export default function Contact() {
                 onChange={handleChange}
                 rows={5}
               />
-              {errors.text && <p>{errors.text}</p>}
+              {errors.text ? (<p className={Styles.errorText}>{errors.text}</p>):(<p className={Styles.errorText}></p>)}
             </div>
             <div className={Styles.divButton}>
               {buttonstate && (

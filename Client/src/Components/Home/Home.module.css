@@ -13,6 +13,17 @@
     width: 50vw; 
     margin-left: 2rem;   
 }
+.textabout {
+    color: rgb(255, 255, 255);
+    font-size: 32px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    box-shadow: 3px 3px 8px rgba(255, 255, 255, 2);
+    padding: 10px;
+    line-height: 1.5;
+    background-color: rgba(0, 0, 0, 0.5);
+
+}
 
 .image{
     display: flex;
@@ -30,13 +41,8 @@
 
 .divmayor {
     background-color: transparent;
-    background-size: cover;
     display: flex;
     flex-direction: column;
-}
-
-.divnav {
-    display: contents;
 }
 
 .loadingContainer {
@@ -74,18 +80,6 @@
     }
 }
 
-
-.textabout {
-    color: rgb(255, 255, 255);
-    font-size: 32px;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    box-shadow: 3px 3px 8px rgba(255, 255, 255, 2);
-    padding: 10px;
-    line-height: 1.5;
-    background-color: rgba(0, 0, 0, 0.5);
-
-}
 
 @media screen and (max-device-width: 768px) and (orientation: portrait){
     .divcontainer {

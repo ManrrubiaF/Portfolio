@@ -3,12 +3,30 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLanguage } from '../../redux/actions';
 import { RootState } from '../../redux/actions-types';
+import { useEffect,useState } from 'react';
 
 
 export default function NavBar() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const languageState = useSelector((state: RootState) => state.language);
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        function handleScroll() {
+            if (window.scrollY > 0) {
+                setScrolled(true);
+            } else {
+                setScrolled(false);
+            }
+        }
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
  
 
     const changeLanguage = () => {
@@ -16,7 +34,7 @@ export default function NavBar() {
     }
 
     return (
-        <nav >
+        <nav className={`${Styles.navMayor} ${scrolled ? Styles.scrolled : ""}`}>
             <div className={Styles.container}>
                 <button className={Styles.navbutton} onClick={() => navigate('/')}>
                     {languageState ? 'Acerca de mí' : 'About me'}

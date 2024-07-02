@@ -20,7 +20,7 @@ export class AboutController {
         return this.aboutService.createAbout(body);
     }
     @Put('/update/:id')
-    upAbout(@Param('id') id: number, @Body ('body') body: any){
+    upAbout(@Param('id') id: number, @Body()  body:any){
         return this.aboutService.updateAbout(id,body)
     }
 
