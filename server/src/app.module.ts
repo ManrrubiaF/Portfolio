@@ -14,7 +14,7 @@ import { LoadDatabaseModule } from './utils/Load_DataBase.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: '.*.env',
+      envFilePath: '.env',
       isGlobal: true
     }),
     TypeOrmModule.forRoot({
