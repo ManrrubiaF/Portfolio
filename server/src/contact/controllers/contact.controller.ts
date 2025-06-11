@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Res } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Post, Res } from '@nestjs/common';
 import { Response } from 'express'
 import { ContactService } from '../services/contact.service';
 
@@ -22,5 +22,10 @@ export class ContactController {
             return res.status(500).send({ error: error.message }); // Maneja los errores adecuadamente
         }
     }
+    @Patch('/:id')
+    update(@Body() body: any, @Param('id') id:number){
+        return this.contactService.updateInfo(id, body)
+    }
+    
 
 }

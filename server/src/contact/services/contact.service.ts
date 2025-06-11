@@ -33,7 +33,10 @@ export class ContactService {
         if(body.whatsapp){
             infoUp.whatsapp = body.whatsapp
         }
-        return this.contactRepo.save(infoUp);
+        const savedInfo = await this.contactRepo.save(infoUp);
+        console.log('info guardada', savedInfo)
+
+        return savedInfo
     }
 
     async contactMailer(body: any) {

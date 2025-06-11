@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Put, Param } from '@nestjs/common';
+import { Controller, Get, Post, Body,  Param, Patch } from '@nestjs/common';
 import { ProjectsService } from '../services/projects.service';
 
 
@@ -15,11 +15,11 @@ export class ProjectsController {
 
     @Post()
     postProject(@Body() body:any){
-        console.log(body)
         return this.projectServ.create(body)
     }
-    @Put('/:id')
-    update(@Body() body:any, @Param() id:number){
-        return this.projectServ.updateProject(id,body)
+    @Patch('/:id')
+    update(@Body() body:any, @Param('id') id:number){
+        console.log(`ID: ${id}, Body: ${JSON.stringify(body)}`, 'ProjectController');
+        return this.projectServ.updateProject(id, body)
     }
 }

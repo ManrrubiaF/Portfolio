@@ -22,9 +22,6 @@ export class ProjectsService {
             }
         });
     }
-    getById(id: number){
-        return this.projectRepo.findOne({where:{ id: id}})
-    }
     create(body: any){
         const newProject = this.projectRepo.create(body);
         return this.projectRepo.save(newProject);
@@ -44,11 +41,15 @@ export class ProjectsService {
         if(body.video){
             projectUp.video = body.video;
         }
+        console.log("link",body.links)
         if(body.links){
-            projectUp.links = body.links;
+            projectUp.links = [...body.links];
         }
 
-        return this.projectRepo.save(projectUp);
+        const savedProject = await this.projectRepo.save(projectUp);
+        
+
+        return savedProject;
     }
     async deleteProject(id: number){
         await this.projectRepo.delete(id)
