@@ -27,7 +27,7 @@ export class ProjectsService {
         return this.projectRepo.save(newProject);
     }
     async updateProject(id: string, body: any){
-        const intId = Number(id)
+        const intId = parseInt(id, 10);
         const projectUp = await this.projectRepo.findOne({
             where: {
                 id: intId
