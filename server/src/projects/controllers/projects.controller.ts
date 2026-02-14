@@ -19,7 +19,6 @@ export class ProjectsController {
     }
     @Patch('/:id')
     update(@Body() body:any, @Param('id') id:string){
-        console.log(`ID: ${id}, Body: ${JSON.stringify(body)}`, 'ProjectController');
         return this.projectServ.updateProject(id, body)
     }
 }

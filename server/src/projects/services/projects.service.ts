@@ -28,26 +28,31 @@ export class ProjectsService {
     }
     async updateProject(id: string, body: any){
         const intId = parseInt(id, 10);
+        console.log("body", body)
         const projectUp = await this.projectRepo.findOne({
             where: {
                 id: intId
             }
         })
-        if(body.name){
+        console.log("projectUP", projectUp)
+        if (body.name !== undefined) {
             projectUp.name = body.name;
         }
-        if(body.description){
+
+        if (body.description !== undefined) {
             projectUp.description = body.description;
         }
-        if(body.video){
+
+        if (body.video !== undefined) {
             projectUp.video = body.video;
-        }
-        console.log("link",body.links)
-        if(body.links){
-            projectUp.links = [...body.links];
+            }
+
+        if (body.links !== undefined) {
+            projectUp.links = body.links;
         }
 
         const savedProject = await this.projectRepo.save(projectUp);
+
         
 
         return savedProject;
