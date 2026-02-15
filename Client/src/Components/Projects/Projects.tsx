@@ -11,15 +11,16 @@ interface Project {
     id: number;
     name: string;
     description: string;
-    photos:string[];
+    photos: string[];
     video?: string;
     links: string[];
+    visible: boolean;
 }
 
 export default function Projects() {
     const [projects, setProjects] = useState<Project[]>([]);
     const Back_url = process.env.REACT_APP_BACK_URL;
-    const Back_url2 = process.env.REACT_APP_BACK_URL2;    
+    const Back_url2 = process.env.REACT_APP_BACK_URL2;
     const languageState = useSelector((state: RootState) => state.language);
 
     useEffect(() => {
@@ -30,22 +31,19 @@ export default function Projects() {
     }, [languageState])
 
     const getProjects = async (languageState: boolean) => {
-        try {
-            const response = await axios.get(`${Back_url}/projects/${languageState}`)
-            setProjects(response.data)
-            console.log(response.data, 'server 1')
-            
-        } catch (error: any) {
-            console.error(error.message)
+        for (const baseUrl of [Back_url, Back_url2]) {
             try {
-                const response = await axios.get(`${Back_url2}/projects/${languageState}`)                
-                setProjects(response.data)
-                console.log('server2', response.data)
-            } catch (error) {
-                console.error('Error en los servidores')                
+                const response = await axios.get(`${baseUrl}/projects/${languageState}`);
+                setProjects(response.data);
+                return;
+            } catch (err) {
+                console.warn(`Server failed: ${baseUrl}`);
             }
         }
-    }
+
+        console.error('All servers failed');
+    };
+
 
 
     return (

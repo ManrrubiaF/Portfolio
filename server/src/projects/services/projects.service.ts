@@ -18,7 +18,8 @@ export class ProjectsService {
 
         return this.projectRepo.find({
             where:{
-                language: actualLanguage
+                language: actualLanguage,
+                visible: true
             }
         });
     }
@@ -34,7 +35,6 @@ export class ProjectsService {
                 id: intId
             }
         })
-        console.log("projectUP", projectUp)
         if (body.name !== undefined) {
             projectUp.name = body.name;
         }
@@ -49,6 +49,9 @@ export class ProjectsService {
 
         if (body.links !== undefined) {
             projectUp.links = body.links;
+        }
+        if (body.visible !== projectUp.visible){
+            projectUp.visible = body.visible
         }
 
         const savedProject = await this.projectRepo.save(projectUp);

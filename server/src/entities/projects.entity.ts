@@ -4,6 +4,8 @@ import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 export class projects {
     @PrimaryGeneratedColumn()
     id: number;
+    @Column({default:true})
+    visible: boolean;
     @Column()
     name: string;
     @Column('text')
