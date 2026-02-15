@@ -6,7 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "engines": {
-    "node": ">=16.x"
+    "node": "18.x"
   },
   "scripts": {
     "build": "nest build",
@@ -25,7 +25,7 @@
     "start:full": "concurrently \"npm run start:dev\" \"npm run start:api\""
   },
   "dependencies": {
-    "@nestjs-modules/mailer": "^1.8.1",
+    "@nestjs-modules/mailer": "^2.0.2",
     "@nestjs/axios": "^3.0.0",
     "@nestjs/common": "^10.0.0",
     "@nestjs/config": "^4.0.3",
