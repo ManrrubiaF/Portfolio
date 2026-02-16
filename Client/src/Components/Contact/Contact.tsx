@@ -1,6 +1,6 @@
 import NavBar from "../NavBar/NavBar";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Styles from "./Contact.module.css";
 import Footer from "../Footer/Footer";
 import { RootState } from "../../redux/actions-types";
@@ -17,24 +17,25 @@ export default function Contact() {
     email: "",
     text: "",
   });
-  
-  const errorMessagesByLanguage = {
-    en: {
-      requiredField: "This field is required",
-      invalidEmail: "Invalid email format",
-      enterMessage: "Insert your message",
-    },
-    es: {
-      requiredField: "Este campo es requerido",
-      invalidEmail: "Formato de correo electrónico no válido",
-      enterMessage: "Ingrese su mensaje",
-    },
-  };
 
-  const validation = () => {
+
+
+  const validation = useCallback(() => {
     const error = { email: "", text: "" };
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     const currentLanguage = languageState ? "es" : "en";
+    const errorMessagesByLanguage = {
+      en: {
+        requiredField: "This field is required",
+        invalidEmail: "Invalid email format",
+        enterMessage: "Insert your message",
+      },
+      es: {
+        requiredField: "Este campo es requerido",
+        invalidEmail: "Formato de correo electrónico no válido",
+        enterMessage: "Ingrese su mensaje",
+      },
+    };
 
     if (Data.email.trim().length === 0) {
       error.email = errorMessagesByLanguage[currentLanguage].requiredField;
@@ -46,7 +47,7 @@ export default function Contact() {
       error.text = errorMessagesByLanguage[currentLanguage].enterMessage;
     }
     return error;
-  };
+  }, [Data, languageState]);
 
   useEffect(() => {
     const resultForm = validation();
@@ -58,7 +59,7 @@ export default function Contact() {
     } else {
       setButtonState(false);
     }
-  }, [Data, languageState]);
+  }, [Data, languageState, validation]);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -112,7 +113,7 @@ export default function Contact() {
                 value={Data.email}
                 onChange={handleChange}
               />
-              {errors.email ? (<p className={Styles.errorText}>{errors.email}</p>):(<p className={Styles.errorText}></p>)}
+              {errors.email ? (<p className={Styles.errorText}>{errors.email}</p>) : (<p className={Styles.errorText}></p>)}
             </div>
             <div className={Styles.labelContainer}>
               <label className={Styles.label}>
@@ -126,7 +127,7 @@ export default function Contact() {
                 onChange={handleChange}
                 rows={5}
               />
-              {errors.text ? (<p className={Styles.errorText}>{errors.text}</p>):(<p className={Styles.errorText}></p>)}
+              {errors.text ? (<p className={Styles.errorText}>{errors.text}</p>) : (<p className={Styles.errorText}></p>)}
             </div>
             <div className={Styles.divButton}>
               {buttonstate && (
