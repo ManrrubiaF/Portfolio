@@ -1,6 +1,6 @@
 import NavBar from '../NavBar/NavBar'
 import Styles from './Home.module.css'
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useCallback } from 'react'
 import axios from 'axios'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../redux/actions-types'
@@ -22,12 +22,12 @@ export default function Home() {
 
     const getAbout = useCallback(async () => {
         try {
-            const response = await axios.get(`${Back_Url}/about/${languageState}`)
+             await axios.get(`${Back_Url}/about/${languageState}`)
             
         } catch (error) {
             console.error('Error en el servidor principal, intentando con el servidor de respaldo');
             try {
-                const response = await axios.get(`${Back_Url2}/about/${languageState}`);
+                 await axios.get(`${Back_Url2}/about/${languageState}`);
             } catch (backupError) {
                 console.error('Error en el servidor de respaldo también');
             }
