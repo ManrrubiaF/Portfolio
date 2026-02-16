@@ -37,7 +37,10 @@ export default function NavBar() {
         <nav className={`${Styles.navMayor} ${scrolled ? Styles.scrolled : ""}`}>
             <div className={Styles.container}>
                 <button className={Styles.navbutton} onClick={() => navigate('/')}>
-                    {languageState ? 'Acerca de mí' : 'About me'}
+                    {languageState ? 'Inicio' : 'Home'}
+                </button>
+                <button className={Styles.navbutton} onClick={()=> navigate('/About')}>
+                    {languageState ? 'Sobre Mi' : 'About me'}
                 </button>
                 <button className={Styles.navbutton} onClick={() => navigate('/Projects')}>
                     {languageState ? 'Proyectos' : 'Projects'}
@@ -51,6 +54,7 @@ export default function NavBar() {
                 <button className={Styles.Lanbutton} onClick={changeLanguage}>
                     {languageState ? 'EN' : 'ES'}
                 </button>
+                
             </div>
         </nav>
     );

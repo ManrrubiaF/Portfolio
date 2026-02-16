@@ -1,0 +1,117 @@
+.divcontainer {
+  display: flex;
+  width: 100%;
+  margin-top: 7rem;
+  justify-content: center;
+}
+
+
+.textabout p:nth-last-child(2) {
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+
+  font-size: 1.15rem;
+  font-weight: 600;
+
+  letter-spacing: 0.5px;
+  color: #93c5fd;
+}
+
+.textabout {
+  max-width: 800px;
+  margin: 0 auto;
+
+  padding: 2.5rem 3rem;
+
+  background: linear-gradient(180deg, #020617, #020617ee);
+  color: #f8fafc;
+
+  border-radius: 14px;
+
+  box-shadow: 
+    0 12px 30px rgba(0, 0, 0, 0.45);
+
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+.textabout p {
+  margin-bottom: 1.2rem;
+
+  font-size: 1.05rem;
+  line-height: 1.7;
+  font-weight: 400;
+
+  text-align: left;
+}
+.textabout p:first-child {
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+
+
+
+
+
+.divmayor {
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+}
+
+.loadingContainer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+}
+.loadingContainer p{
+    text-align: center;
+    text-decoration:solid;
+    font-size: 24px;
+}
+
+.loadingSpinner {
+    border: 4px solid rgba(0, 0, 0, 0.3);
+    border-top: 4px solid #f5f5f5;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+@media screen and (max-device-width: 768px) and (orientation: portrait){
+    .divcontainer {
+        flex-direction: column;
+        margin-top: 5rem;
+    }
+
+    .textContainer {
+        width: 90vw;
+        margin-left: 0;
+    }
+    .divmayor{
+        width: 100vw;
+    }
+
+    .textabout {
+        width: 100%;
+        font-size: 24px;
+        padding: 5px;
+    }
+
+}

@@ -1,22 +1,16 @@
-import NavBar from '../NavBar/NavBar'
-import Styles from './Home.module.css'
-import { useEffect, useState } from 'react'
+import Styles from './About.module.css'
 import axios from 'axios'
+import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../redux/actions-types'
-import foto from '../../assets/foto-cv-removebg-preview.jpg'
-import { useNavigate } from 'react-router-dom'
+import NavBar from '../NavBar/NavBar'
 
-
-
-
-
-export default function Home() {
-    const languageState = useSelector((state: RootState) => state.language);
-    const [about, setAbout] = useState("")
+export default function About() {
+    const languageState = useSelector((state: RootState) => state.language)
+    const [about, setAbout] = useState('')
     const Back_Url = process.env.REACT_APP_BACK_URL;
     const Back_Url2 = process.env.REACT_APP_BACK_URL2;
-    const navigate = useNavigate()
+    const paragraphs = about.split('\n').filter(p => p.trim() !== '')
 
     useEffect(() => {
         getAbout()
@@ -40,20 +34,17 @@ export default function Home() {
         }
     }
 
-
     return (
         <div className={Styles.divmayor}>
             <NavBar />
             <div className={Styles.divcontainer}>
                 {about !== '' ? (
-                    <div className={Styles.divHero}>
-                        <h1>Favio Manrrubia</h1>
-                        <h2>Full Stack Developer · Backend-oriented</h2>
-                        <p>Construyo aplicaciones web con foco en arquitectura limpia, datos y backend escalable.
-                        </p>
-                        <p>
-                            Disponible para oportunidades · <strong className={Styles.Contact} onClick={() => navigate('/contact')}>Contacto</strong>
-                        </p>
+                    <div className={Styles.textabout}>
+                        
+                            {paragraphs.map((p, i) => (
+                                <p key={i}>{p}</p>
+                            ))}
+                        
                     </div>
                 ) : (
                     <div className={Styles.loadingContainer}>
@@ -62,11 +53,8 @@ export default function Home() {
                     </div>
                 )}
 
-                <div className={Styles.image}>
-                    <img src={foto} alt='Profile/Perfil' />
-                </div>
             </div>
-        </div >
+        </div>
     )
 }
 

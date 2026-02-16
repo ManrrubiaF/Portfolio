@@ -1,7 +1,7 @@
 :root {
-  background-image: url('../public/imagenes/fondo.jpeg');
-  background-color: rgba(0, 0, 0, 0.2); /* Color de fondo con transparencia */
-  background-blend-mode: overlay; /* Mezcla la imagen con el color */
+  
+  background-color: rgba(59, 182, 223, 0.5); /* Color de fondo con transparencia */
+  
   margin: 0;
 }
 
