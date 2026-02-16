@@ -19,7 +19,7 @@ export default function Home() {
     const Back_Url2 = process.env.REACT_APP_BACK_URL2;
     const navigate = useNavigate()
 
-   
+
 
     const getAbout = useCallback(async () => {
         try {
@@ -34,9 +34,9 @@ export default function Home() {
                 console.error('Error en el servidor de respaldo también');
             }
         }
-    },[Back_Url,Back_Url2,languageState]);
+    }, [Back_Url, Back_Url2, languageState]);
 
-     useEffect(() => {
+    useEffect(() => {
         getAbout()
     }, [getAbout])
 
@@ -45,27 +45,48 @@ export default function Home() {
         <div className={Styles.divmayor}>
             <NavBar />
             <div className={Styles.divcontainer}>
-                {about !== '' ? (
+                {languageState ? (
                     <div className={Styles.divHero}>
                         <h1>Favio Manrrubia</h1>
                         <h2>Full Stack Developer · Backend-oriented</h2>
-                        <p>Construyo aplicaciones web con foco en arquitectura limpia, datos y backend escalable.
+                        <p>
+                            Construyo aplicaciones web con foco en arquitectura limpia, datos y backend escalable.
                         </p>
                         <p>
-                            Disponible para oportunidades · <strong className={Styles.Contact} onClick={() => navigate('/contact')}>Contacto</strong>
+                            Disponible para oportunidades ·{" "}
+                            <strong
+                                className={Styles.Contact}
+                                onClick={() => navigate("/contact")}
+                            >
+                                Contacto
+                            </strong>
                         </p>
                     </div>
                 ) : (
-                    <div className={Styles.loadingContainer}>
-                        <div className={Styles.loadingSpinner}></div>
-                        <p>Loading...</p>
+                    <div className={Styles.divHero}>
+                        <h1>Favio Manrrubia</h1>
+                        <h2>Full Stack Developer · Backend-oriented</h2>
+                        <p>
+                            I build web applications with a strong focus on clean architecture,
+                            data, and scalable backend systems.
+                        </p>
+                        <p>
+                            Available for opportunities ·{" "}
+                            <strong
+                                className={Styles.Contact}
+                                onClick={() => navigate("/contact")}
+                            >
+                                Contact
+                            </strong>
+                        </p>
                     </div>
                 )}
 
                 <div className={Styles.image}>
-                    <img src={foto} alt='Profile/Perfil' />
+                    <img src={foto} alt="Profile / Perfil" />
                 </div>
             </div>
+
         </div >
     )
 }
