@@ -1,5 +1,5 @@
 .divcontainer {
-    background-color: transparent;
+    background-color: #020617;
     background-size: cover;
     display: flex;
     width: 100vw;
@@ -13,7 +13,7 @@
   align-items: center;
   width: 100vw;
   height: 50vh;
-  padding: 4rem;
+  padding-left: 14rem;
   background-color: #020617;
   color: #e5e7eb;
 }
@@ -55,10 +55,11 @@
 
 .image{
     display: flex;
-    width: 400px;
+    width: 600px;
     height: 400px;    
     right: 4rem;
-    position: fixed;
+    margin-right: 5rem;
+    position: inherit;    
     border:2px solid rgb(255, 255, 255, 0.7);
     border-radius: 50%;
     align-items: center;
