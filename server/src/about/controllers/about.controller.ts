@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Put, Param, Body } from '@nestjs/common';
+import { Controller, Get, Post, Put, Param, Body, Patch } from '@nestjs/common';
 import { AboutService } from '../services/about.service';
 
 @Controller('about')
@@ -19,8 +19,8 @@ export class AboutController {
     newAbout(@Body('body') body: any){
         return this.aboutService.createAbout(body);
     }
-    @Put('/update/:id')
-    upAbout(@Param('id') id: number, @Body()  body:any){
+    @Patch('/update/:id')
+    upAbout(@Param('id') id: string, @Body()  body:any){
         return this.aboutService.updateAbout(id,body)
     }
 

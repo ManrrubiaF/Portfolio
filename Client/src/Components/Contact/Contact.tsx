@@ -17,6 +17,7 @@ export default function Contact() {
     email: "",
     text: "",
   });
+  
   const errorMessagesByLanguage = {
     en: {
       requiredField: "This field is required",

@@ -29,13 +29,15 @@ export class AboutService {
             return this.aboutRepo.save(newAbout);
         }
 
-        async updateAbout(id: number , body: any){
-            const aboutExist = await this.aboutRepo.update(id, body)
+        async updateAbout(id: string , body: any){
+            const newId = parseInt(id,10)
+            const aboutExist = await this.aboutRepo.update(newId, body)
+            
             if(aboutExist.affected === 0 ){                
                 throw new NotFoundException(`About with id ${id} not found`);
                  
             }
-            return this.aboutRepo.findOne({where:{id:id}})
+            return this.aboutRepo.findOne({where:{id:newId}})
 
         }
 
