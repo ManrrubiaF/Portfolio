@@ -1,7 +1,7 @@
 import NavBar from "../NavBar/NavBar";
 import Styles from "./Skills.module.css";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { RootState } from "../../redux/actions-types";
 import { useSelector } from "react-redux";
 
@@ -18,11 +18,7 @@ export default function ViewSkills() {
   const Back_url2 = process.env.REACT_APP_BACK_URL2;
   const languageState = useSelector((state: RootState) => state.language);
 
-  useEffect(() => {
-    getSkills();
-  }, []);
-
-  const getSkills = async () => {
+  const getSkills = useCallback(async () => {
     try {
       const response = await axios.get(`${Back_url}/skills`);
       setSkills(response.data);
@@ -35,7 +31,7 @@ export default function ViewSkills() {
         console.error('Error en los servidores')
       }
     }
-  };
+  },[Back_url,Back_url2]);
 
   const handleDownload = () => {
     let pdfUrl = "";
@@ -50,6 +46,9 @@ export default function ViewSkills() {
     link.href = pdfUrl;
     link.click();
   };
+  useEffect(() => {
+    getSkills();
+  }, [getSkills,languageState]);
 
   return (
     <div className={Styles.divMayor}>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,useCallback } from "react";
 import axios from "axios";
 import Styles from './Footer.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,11 +13,9 @@ export default function Footer(){
     const Back_Url = process.env.REACT_APP_BACK_URL;
     const Back_Url2 = process.env.REACT_APP_BACK_URL2;
 
-    useEffect(() => {
-        getContactInfo();
-    }, [])    
+    
 
-    const getContactInfo = async () => {
+    const getContactInfo = useCallback(async () => {
         try {
             const response = await axios.get(`${Back_Url}/contact`)
             setContactInfo(response.data[0])
@@ -30,7 +28,11 @@ export default function Footer(){
                 console.error('Error en los servidores')
             }
         }
-    }
+    },[Back_Url,Back_Url2])
+
+    useEffect(() => {
+        getContactInfo();
+    }, [getContactInfo])    
 
     return(
         <footer className={Styles.Footer}>

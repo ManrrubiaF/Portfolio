@@ -1,11 +1,12 @@
 import NavBar from '../NavBar/NavBar'
 import Styles from './Home.module.css'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import axios from 'axios'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../redux/actions-types'
 import foto from '../../assets/foto-cv-removebg-preview.jpg'
 import { useNavigate } from 'react-router-dom'
+
 
 
 
@@ -18,14 +19,9 @@ export default function Home() {
     const Back_Url2 = process.env.REACT_APP_BACK_URL2;
     const navigate = useNavigate()
 
-    useEffect(() => {
-        getAbout()
-    }, [])
-    useEffect(() => {
-        getAbout()
-    }, [languageState])
+   
 
-    const getAbout = async () => {
+    const getAbout = useCallback(async () => {
         try {
             const response = await axios.get(`${Back_Url}/about/${languageState}`)
             setAbout(response.data[0].text);
@@ -38,7 +34,11 @@ export default function Home() {
                 console.error('Error en el servidor de respaldo también');
             }
         }
-    }
+    },[Back_Url,Back_Url2,languageState]);
+
+     useEffect(() => {
+        getAbout()
+    }, [getAbout])
 
 
     return (

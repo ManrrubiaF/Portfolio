@@ -1,6 +1,6 @@
 import Styles from './About.module.css'
 import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../redux/actions-types'
 import NavBar from '../NavBar/NavBar'
@@ -12,14 +12,8 @@ export default function About() {
     const Back_Url2 = process.env.REACT_APP_BACK_URL2;
     const paragraphs = about.split('\n').filter(p => p.trim() !== '')
 
-    useEffect(() => {
-        getAbout()
-    }, [])
-    useEffect(() => {
-        getAbout()
-    }, [languageState])
-
-    const getAbout = async () => {
+    
+    const getAbout = useCallback(async () => {
         try {
             const response = await axios.get(`${Back_Url}/about/${languageState}`)
             setAbout(response.data[0].text);
@@ -32,7 +26,11 @@ export default function About() {
                 console.error('Error en el servidor de respaldo también');
             }
         }
-    }
+    },[Back_Url,Back_Url2,languageState])
+
+    useEffect(() => {
+        getAbout()
+    }, [getAbout])
 
     return (
         <div className={Styles.divmayor}>
